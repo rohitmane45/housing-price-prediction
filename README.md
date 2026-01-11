@@ -39,7 +39,7 @@ Uses the California Housing dataset with features such as:
 ## Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/housing-price-prediction.git
+git clone https://github.com/rohitmane45/housing-price-prediction.git
 cd housing-price-prediction
 ```
 
@@ -47,6 +47,8 @@ cd housing-price-prediction
 ```bash
 pip install -r requirements.txt
 ```
+
+3. The model files and CSV data will be generated automatically on first run.
 
 ## Usage
 
@@ -78,14 +80,24 @@ On subsequent runs, the script will:
 ```
 .
 ├── main.py                 # Main training and inference script
-├── housing.csv            # Training dataset
-├── input.csv              # Test/input data for predictions
-├── output.csv             # Predicted house values
-├── model.pkl              # Trained Random Forest model
-├── pipeline.pkl           # Data preprocessing pipeline
-├── requirements.txt       # Project dependencies
-└── README.md             # This file
+├── main_old.py             # Original training script (reference)
+├── requirements.txt        # Project dependencies
+├── .gitignore              # Files to exclude from Git
+├── README.md               # This file
+│
+├── housing.csv             # Training dataset (generated/local)
+├── input.csv               # Test data (generated/local)
+├── output.csv              # Predictions (generated/local)
+├── model.pkl               # Trained model (generated/local, 137 MB)
+└── pipeline.pkl            # Preprocessing pipeline (generated/local)
 ```
+
+**Note on .gitignore:**
+The `.gitignore` file prevents uploading large files to GitHub:
+- `*.pkl` files (model.pkl, pipeline.pkl) - Too large (137+ MB)
+- `*.csv` files - Can be regenerated from code
+- `__pycache__/` - Python cache files
+- `venv/` - Virtual environment
 
 ## Model Performance
 - **Algorithm**: Random Forest Regressor
@@ -111,6 +123,15 @@ This was my first ML project where I learned:
 
 ## License
 This project is open source and available under the MIT License.
+
+## About .gitignore
+This project uses a `.gitignore` file to exclude large and auto-generated files from GitHub:
+- **Model files** (`*.pkl`) - Too large for GitHub (137+ MB limit)
+- **Data files** (`*.csv`) - Can be regenerated when the script runs
+- **Python cache** (`__pycache__`, `*.pyc`) - Auto-generated
+- **Virtual environment** (`venv/`) - User-specific
+
+This keeps the repository lightweight while maintaining full functionality. When you clone and run `main.py`, all necessary files are generated automatically.
 
 ## Author
 Created as my first machine learning project to demonstrate end-to-end ML pipeline development.
